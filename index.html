@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generacion Y</title>
+<link rel="icon" href="/432605790_929151685582053_5860969370641781263_n.jpg" type="image/x-icon">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background:#0b0b0b;
+  color:#eaeaea;
+}
+
+/* alternar fondos para dar contraste premium */
+.section:nth-of-type(even) {
+  background:#0f0f0f;
+}
+
+.section:nth-of-type(odd) {
+  background:#141414;
+}
+
+header {
+  position:fixed;
+  width:100%;
+  padding:5px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  top: 0;
+  left: 0;
+  z-index: 1000; /* 🔥 clave */
+}
+
+header h1 {
+  font-family:'Playfair Display', serif;
+  color:#d4af37;
+  font-weight:600;
+  letter-spacing:3px;
+}
+
+nav a {
+  color:#ccc;
+  text-decoration:none;
+  margin-left:30px;
+  font-size:14px;
+  letter-spacing:1px;
+  transition:0.3s;
+}
+
+nav a:hover { color:#d4af37; }
+
+.hero {
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:url('https://media-cdn.tripadvisor.com/media/photo-m/1280/2b/78/e6/7d/podes-disfrutar-tu-almuerzo.jpg') center/cover;
+}
+
+.hero h2 {
+  font-family:'Playfair Display', serif;
+  font-size:3.5rem;
+  font-weight:400;
+  color:#fff;
+}
+
+.hero p {
+  margin-top:15px;
+  color:#bbb;
+  letter-spacing:2px;
+}
+
+.section {
+  padding:120px 80px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+/* contenedor interno para que no quede vacío */
+.section .about, .section .grid {
+  max-width:900px;
+}
+
+/* mejorar contraste visual */
+.section {
+  border-top:1px solid rgba(212,175,55,0.08);
+}
+
+.section-title {
+  margin-bottom:30px;
+}
+
+.about {
+  background:rgba(255,255,255,0.02);
+  padding:30px;
+  border-radius:6px;
+}
+
+.section-title {
+  font-family:'Playfair Display', serif;
+  font-size:2rem;
+  color:#d4af37;
+  margin-bottom:60px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+}
+
+.card {
+  background:#111;
+  padding:30px;
+  transition:0.4s;
+  border-radius:6px;
+}
+
+.card:hover {
+  transform:translateY(-8px);
+  background:#161616;
+}
+
+.card h3 {
+  font-family:'Playfair Display', serif;
+  margin-bottom:10px;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.team-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.team-row img {
+  width: 45%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.team-info {
+  width: 50%;
+  text-align: left;
+}
+
+@media (max-width: 860px) {
+  .team-row {
+    flex-direction: column;
+    text-align: center;
+  }
+  .team-row img,
+  .team-info {
+    width: 100%;
+  }
+}
+
+.card span {
+  color:#d4af37;
+  font-size:14px;
+}
+
+.btn {
+  margin-top:15px;
+  display:inline-block;
+  font-size:12px;
+  letter-spacing:2px;
+  color:#d4af37;
+  border-bottom:1px solid #d4af37;
+  cursor:pointer;
+}
+
+.about {
+  max-width:700px;
+  line-height:1.7;
+  color:#bbb;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: #111;
+  padding: 25px;
+  border: 1px solid rgba(212,175,55,0.15);
+  border-radius: 8px;
+  transform: translateY(0);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 26px rgba(212,175,55,0.35);
+  border-color: rgba(212,175,55,0.35);
+}
+
+.product-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-card h3 {
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+}
+
+.product-card p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+@media (max-width: 850px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+footer {
+  padding:40px;
+  text-align:center;
+  font-size:12px;
+  color:#666;
+}
+
+.fade {
+  opacity:1;
+  transform:none;
+}
+
+/* animación opcional más adelante */
+
+.fade.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.review-card {
+  min-width: 100%;
+  padding: 20px;
+  background: #111;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.review-card p {
+  color: #bbb;
+  line-height: 1.7;
+}
+
+.stars {
+  color: #d4af37;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #d4af37;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.prev { left: 10px; }
+
+.next { right: 10px; }
+
+/* CAROUSEL PREMIUM */
+.img-carousel {
+  max-width: 750px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.img-carousel-track {
+  display: flex;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.img-carousel-track {
+  display: flex;
+}
+
+.img-carousel-track img {
+  min-width: 100%;
+  flex-shrink: 0; /* 🔥 CLAVE */
+}
+
+.img-carousel img {
+  min-width: 100%;
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+
+  filter: brightness(0.85) contrast(1.05);
+  transition: transform 0.6s ease, filter 0.6s ease, box-shadow 0.6s ease;
+}
+
+.img-carousel img:hover {
+  transform: scale(1.02);
+  filter: brightness(1) contrast(1.1);
+
+  /* ✨ GLOW PREMIUM */
+  box-shadow:
+     0 0 8px rgba(212,175,55,0.2),
+     0 0 18px rgba(212,175,55,0.15),
+    0 15px 40px rgba(0,0,0,0.6);
+}
+
+.dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 6px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transition: all 0.4s ease;
+}
+
+.dot.active {
+  width: 18px;
+  border-radius: 10px;
+  background: #d4af37;
+}
+
+.logo img{
+  height: 5vh;
+  border-radius: 50%;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#" class="logo"><img src="/432605790_929151685582053_5860969370641781263_n.jpg" alt="" /></a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="equipo.html">Equipo</a>
+    <a href="analisis.html">Análisis</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Generacion Y</h2>
+  <p>VINOTECA & RESTAURANTE</p>
+</section>
+
+<section class="section fade" id="intro">
+  <h2 class="section-title">Sobre Nosotros</h2>
+  <p class="about">
+    Generación Y es un restaurante y vinoteca ubicado en Av.  Roque Pérez 2342, Posadas, Misiones, Argentina, especializado en cocina nikkei, sushi, platos japoneses y vinos.  Ofrece una experiencia gastronómica única con un ambiente exótico y acogedor, destacando por su atención personalizada y la posibilidad de elegir botellas de vino directamente de su bodega sin cargo adicional. 
+  </p>
+</section>
+
+<!-- AMBIENTE -->
+<section class="section fade" id="equipo">
+  <h2 class="section-title">Equipo</h2>
+  <div class="team">
+    <div class="team-row">
+      <div class="team-info">
+        <h3>Gerente General</h3>
+        <p class="about">Nuestra gerente coordina la experiencia en sala y garantiza una selección de vinos exhaustiva y elegante.</p>
+      </div>
+      <img src="https://imgs.search.brave.com/Jk14d3RhvicehnqkhS5tyUpqwwffZ6Gy4wKH3GLB5PA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9xYW1h/cmVyby5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjQvMTEv/WmZxWGJ3NHF5Zk5o/RnpPR19jdWFsZXMt/c29uLWxhcy1mdW5j/aW9uZXMtZGUtZ2Vy/ZW50ZS1kZS1yZXN0/YXVyYW50ZS5qcGc" alt="Gerente" />
+    </div>
+    <div class="team-row">
+      <img src="https://imgs.search.brave.com/mAgb4HGrgGF0B4kANLwOlw66LCztV6ROHfrvGl-8vv8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNjU4/NjEzMTk4L3Bob3Rv/L3NvbW1lbGllci1o/b2xkaW5nLXdpbmUt/Ym90dGxlLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1RenFI/d0R0RFNsZE5BZktQ/Rm5aODJaUUxmWnVj/UjBvMm9fM1dwOUQ3/am1rPQ" alt="Empleado" />
+      <div class="team-info">
+        <h3>Sommelier</h3>
+        <p class="about">Nuestro sommelier diseña experiencias personalizadas, recomendando maridajes únicos para cada ocasión.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILOSOFIA -->
+<section class="section fade" id="productos">
+  <h2 class="section-title">Productos</h2>
+  <div class="products-grid">
+    <div class="product-card">
+      <a href="#link-mediodia" class="product-link">
+        <h3>Carta de Mediodía</h3>
+        <p>Opciones ligeras y renovadas para el almuerzo, perfectas para aprovechar con un vino fresco.</p>
+      </a>
+    </div>
+    <div class="product-card">
+      <a href="#link-cena" class="product-link">
+        <h3>Carta de Cena</h3>
+        <p>Selección de platos robustos y elegantes, acompañados de una carta de vinos premium.</p>
+      </a>
+    </div>
+    <div class="product-card">
+      <a href="#link-vereda" class="product-link">
+        <h3>Carta de Vereda</h3>
+        <p>Tapas y platos informales para disfrutar al aire libre con amigos y buena compañía.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGENES -->
+<section class="section fade" id="imagenes">
+  <h2 class="section-title">Imágenes</h2>
+
+  <div class="img-carousel">
+    <div class="img-carousel-track">
+      <img  src="https://imgs.search.brave.com/E-Da9BqOw5eTXaSEwhqeTDk3CUFsgQNYnh4iglRKgfw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS1jZG4udHJpcGFk/dmlzb3IuY29tL21l/ZGlhL3Bob3RvLW8v/MmYvNmEvZTgvYmMv/Y2FwdGlvbi5qcGc" />
+      <img  src="https://imgs.search.brave.com/VV7t1ZaAdup9pgZVj3aUaZf3xJqvMTDxsTyVfGWleIw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS1jZG4udHJpcGFk/dmlzb3IuY29tL21l/ZGlhL3Bob3RvLW8v/MmIvNzgvZTYvN2Uv/YWxtb3J6YXItZW4t/bnVlc3Ryby1wYXRp/by5qcGc" />
+      <img  src="https://media-cdn.tripadvisor.com/media/photo-m/1280/2b/78/e6/7d/podes-disfrutar-tu-almuerzo.jpg" />
+      <img  src="https://imgs.search.brave.com/3-LihyokyxtQPdzk6wOm0JiyvNsvvz5279pzq_LVm9o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9lbGJv/ZGVnb25kZWxuYXV0/aWNvLmNvbS5hci93/cC1jb250ZW50L3Vw/bG9hZHMvZ2VuZXJh/Y2lvbi15LTUuYXZp/Zg" />
+      <img  src="https://media-cdn.tripadvisor.com/media/photo-m/1280/2c/f5/e9/8d/caption.jpg" />
+    </div>
+
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="section fade" id="resenas">
+  <h2 class="section-title">Reseñas de Clientes</h2>
+  <div class="carousel">
+    <div class="carousel-inner">
+      <div class="review-card">
+        <p>"Excelente experiencia, el vino estaba perfecto."</p>
+        <div class="stars">★★★★</div>
+        <span>- María González</span>
+      </div>
+      <div class="review-card">
+        <p>"Ambiente increíble y servicio de primera."</p>
+        <div class="stars">★★★★</div>
+        <span>- Juan Pérez</span>
+      </div>
+      <div class="review-card">
+        <p>"Recomiendo totalmente, volveré pronto."</p>
+        <div class="stars">★★★★★</div>
+        <span>- Ana López</span>
+      </div>
+      <div class="review-card">
+        <p>"Una velada inolvidable: sabores y atención de lujo."</p>
+        <div class="stars">★★★★★</div>
+        <span>- Pablo Martínez</span>
+      </div>
+      <div class="review-card">
+        <p>"Perfecto para celebrar, la carta de vinos es extraordinaria."</p>
+        <div class="stars">★★★★★</div>
+        <span>- Laura Ramírez</span>
+      </div>
+    </div>
+    <button class="carousel-btn prev">&lt;</button>
+    <button class="carousel-btn next">&gt;</button>
+  </div>
+</section>
+
+<!-- UBICACION -->
+<section class="section fade" id="ubicacion">
+  <h2 class="section-title">Ubicación</h2>
+  <div class="about" style="max-width: 100%;">
+    <div style="width:100%;height:340px;margin-bottom:20px;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3543.490186721858!2d-55.898484200000006!3d-27.360402699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457bfe218fbe0d1%3A0xb6b8e47fdc783e36!2sGeneraci%C3%B3n%20Y!5e0!3m2!1ses-419!2sar!4v1774393670604!5m2!1ses-419!2sar" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <p><strong>Dirección:</strong> Av. Roque Pérez 2342, N3300MUT Posadas, Misiones, Argentina</p>
+    <p><strong>Horario de atención:</strong> Lun a Sáb 8hs a 01hs | Dom 9hs a 17hs</p>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="section fade">
+  <p class="about" style="text-align:center; font-family:'Playfair Display', serif;">
+    "Viví la #ExperienciaGy"
+  </p>
+</section>
+
+<footer>
+  © 2026 Los Debuggers
+</footer>
+
+<script>
+const wines = [
+  { name:"Gran Malbec", price:"$18.000" },
+  { name:"Reserva Cabernet", price:"$22.000" },
+  { name:"Blend Premium", price:"$25.000" }
+];
+
+const container = document.getElementById("wineContainer");
+
+if (container) {
+  wines.forEach(wine => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
+      <h3>${wine.name}</h3>
+      <span>${wine.price}</span>
+      <div class="btn" onclick="buyWine('${wine.name}')">VER DETALLE</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function buyWine(name){
+  alert("Explorando " + name);
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+// Carousel for reviews
+const carousel = document.querySelector('.carousel-inner');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+let currentIndex = 0;
+const totalSlides = document.querySelectorAll('.review-card').length;
+
+function updateCarousel() {
+  if (carousel) {
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+}
+
+if (prevBtn && nextBtn) {
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalSlides - 1;
+    updateCarousel();
+  });
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex < totalSlides - 1) ? currentIndex + 1 : 0;
+    updateCarousel();
+  });
+}
+
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+// AUTO CAROUSEL PREMIUM
+const track = document.querySelector('.img-carousel-track');
+const dots = document.querySelectorAll('.dot');
+let imgIndex = 0;
+
+function updateCarouselPremium() {
+  if(track){
+    track.style.transform = `translateX(-${imgIndex * 100}%)`;
+    dots.forEach(d => d.classList.remove('active'));
+    if(dots[imgIndex]) dots[imgIndex].classList.add('active');
+  }
+}
+
+setInterval(() => {
+  if(track){
+    imgIndex = (imgIndex + 1) % dots.length;
+    updateCarouselPremium();
+  }
+}, 4000);
+
+// click en puntos
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    imgIndex = i;
+    updateCarouselPremium();
+  });
+});
+</script>
+
+</body>
+</html>

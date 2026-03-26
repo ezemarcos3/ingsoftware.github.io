@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis | Generacion Y</title>
+    <link rel="icon" href="/432605790_929151685582053_5860969370641781263_n.jpg" type="image/x-icon">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b0b0b;
+            color: #eaeaea;
+        }
+
+        /* alternar fondos para dar contraste premium */
+        .section:nth-of-type(even) {
+            background: #0f0f0f;
+        }
+
+        .section:nth-of-type(odd) {
+            background: #141414;
+        }
+
+        .logo img {
+            height: 5vh;
+            border-radius: 50%;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 5px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        /* SECCION */
+        .section {
+            padding: 140px 80px 100px;
+            text-align: center;
+        }
+
+        /* TITULO */
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #d4af37;
+            letter-spacing: 3px;
+            margin-bottom: 60px;
+        }
+
+        /* BOTONES */
+        .analysis-menu {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+        }
+
+        .analysis-btn {
+            padding: 20px;
+            background: #111;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: #ccc;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.4s;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .analysis-btn:hover {
+            color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow:
+                0 0 15px rgba(212, 175, 55, 0.2),
+                0 0 30px rgba(212, 175, 55, 0.1);
+        }
+
+        /* CONTENIDO */
+        .analysis-content {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .content-box {
+            display: none;
+            background: #111;
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            animation: fade 0.4s ease;
+        }
+
+        .content-box h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+
+        /* ANIMACION */
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:900px) {
+            .analysis-menu {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:500px) {
+            .analysis-menu {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CONTENEDOR GENERAL */
+        .interview-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* FILAS DE 3 */
+        .interview-group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* TARJETAS */
+        .qa-box {
+            background: #0f0f0f;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: 0.3s;
+        }
+
+        /* HOVER PREMIUM */
+        .qa-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow:
+                0 0 15px rgba(212, 175, 55, 0.15);
+        }
+
+        .qa-box h3 {
+            font-family: 'Playfair Display', serif;
+            color: #e7e2d1;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .qa-box p {
+            font-size: 13px;
+            color: #bbb;
+            line-height: 1.5;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .interview-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CONTENEDOR */
+        .questionnaire-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* FILAS */
+        .question-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        /* ULTIMA FILA (1 SOLO) */
+        .question-group.single {
+            grid-template-columns: 1fr;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        /* ESTRELLAS */
+        .stars {
+            color: #d4af37;
+            font-size: 22px;
+            margin-top: 10px;
+            letter-spacing: 4px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            .question-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="logo"><img src="/432605790_929151685582053_5860969370641781263_n.jpg" alt="" /></a>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="equipo.html">Equipo</a>
+            <a href="analisis.html">Análisis</a>
+        </nav>
+    </header>
+
+    <section class="section">
+
+        <h1 class="page-title">Análisis</h1>
+
+        <!-- BOTONES -->
+        <div class="analysis-menu">
+            <div class="analysis-btn" onclick="showSection('proposito')">Declaración de Propósitos</div>
+            <div class="analysis-btn" onclick="showSection('acontecimientos')">Lista de Acontecimientos</div>
+            <div class="analysis-btn" onclick="showSection('entrevista')">Entrevista</div>
+            <div class="analysis-btn" onclick="showSection('cuestionario')">Cuestionario</div>
+        </div>
+
+        <!-- CONTENIDO -->
+        <div class="analysis-content">
+
+            <div id="proposito" class="content-box">
+                <h2>Declaración de Propósitos</h2>
+                <p>Se analiza el funcionamiento organizacional de una vinoteca/restaurante ubicada en Posadas, Misiones,
+                    con el objetivo de comprender cómo se desarrollan las actividades diarias, tales como la atención al
+                    cliente, la gestión de pedidos, el control de stock y la coordinación entre los distintos sectores.
+
+                    El análisis se centra en identificar cómo se organiza y circula la información dentro del negocio,
+                    así como en reconocer los principales problemas que afectan su funcionamiento, como demoras en la
+                    atención, errores en los pedidos y dificultades en la organización interna.
+
+                    El sistema de trabajo responde a la necesidad de ordenar las actividades del establecimiento,
+                    asegurar una adecuada coordinación entre sus áreas y brindar un servicio eficiente y de calidad a
+                    los clientes.
+
+                    A partir de esto, se busca detectar oportunidades de mejora en los procesos, con el fin de optimizar
+                    el funcionamiento general del negocio y dar respuesta a las necesidades tanto de la organización
+                    como de sus clientes.</p>
+            </div>
+
+            <div id="acontecimientos" class="content-box">
+                <h2>Lista de Acontecimientos</h2>
+                <ul>
+                    <li>Cliente realiza pedido
+                    <li> Cliente realiza reserva</li>
+                    <li>Cliente realiza reclamo</li>
+                    <li>Cliente realiza pago</li>
+                    <li>Cliente recibe confirmación de pedido</li>
+                    <li>Cliente recibe confirmación de reserva</li>
+                    <li>Cliente recibe comprobante</li>
+                    <li>Empleado carga datos del pedido</li>
+                    <li>Empleado carga datos de cliente</li>
+                    <li>Empleado carga datos de reserva</li>
+                    <li>Empleado actualiza stock</li>
+                    <li>Empleado registra mercadería</li>
+                    <li>Empleado recibe información de stock</li>
+                    <li>Empleado recibe pedidos registrados</li>
+                    <li>Empleado recibe reportes</li>
+                    <li>Cocina recibe comanda</li>
+                    <li>Cocina envía pedido preparado</li>
+                    <li>Plataforma de delivery recibe pedido</li>
+                    <li>Plataforma de delivery envía estado de entrega</li>
+                    <li>Proveedor recibe orden de compra</li>
+                    <li>Proveedor envía mercadería</li>
+                    <li>Proveedor envía factura</li>
+                </ul>
+
+                <h3 style="margin-top:50px;">Diagrama de Flujo de Datos</h3>
+
+                <div style="margin-top:20px; max-width:800px; margin-left:auto; margin-right:auto;">
+                    <img src="/image.png"
+                        alt="Diagrama de Flujo de Datos" style=" width:100%; border-radius:10px;border:1px solid rgba(255,255,255,0.1);box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+                </div>
+            </div>
+            <div id="entrevista" class="content-box">
+                <h2>Entrevistas</h2>
+
+                <!-- EMPLEADO -->
+                <h3 style="margin:40px 0 20px; color:#d4af37;">Empleados</h3>
+
+                <div class="interview-container">
+
+                    <div class="interview-group">
+                        <div class="qa-box">
+                            <h3>¿Qué sistema se utiliza para pedidos y reservas?</h3>
+                            <p>El personal administrativo utiliza Excel para la venta y las comandas. Los mozos y el
+                                resto del personal, utilizan Alma Gestión.</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Cuentan con un sistema para controlar el inventario? </h3>
+                            <p>Todo está controlado mediante Alma Gestión.</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Recibe capacitación para realizar su trabajo?</h3>
+                            <p>Sí. Todos los empleados reciben capacitaciones. Los cursos son pagados por la empresa.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="interview-group">
+                        <div class="qa-box">
+                            <h3>En caso que haya quejas o reclamos de los clientes ¿Cómo se manejan? </h3>
+                            <p>Si el cliente trae un vino picado, en mal estado, se le hace un cambio. En el
+                                restaurante, con quejas como "El bife está crudo" en uno o dos minutos se soluciona. El
+                                cliente siempre tiene la razón en esos casos.</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Cuál es el horario del restaurante para los trabajadores?</h3>
+                            <p>Desde las 8 hasta las 13 a la mañana. Y desde las 17 hasta cuando se vaya el úlimo
+                                cliente.</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Cuáles son sus principales tareas?</h3>
+                            <p>Los empleados en el área de ventas y administración se encargan de la recepción de
+                                personas, ventas online, administración y control de inventarios, mientras que el
+                                encargado de servicio realiza la gestión de mozos, coordinación del servicio, atención
+                                directa en salón y supervisión de tiempos de cocina.</p>
+                        </div>
+                    </div>
+
+                    <div class="interview-group">
+                        <div class="qa-box">
+                            <h3>¿Tiene un horario de trabajo fijo?</h3>
+                            <p>Si. Todos los empleados tienen un horario fijo según su cargo.</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Qué parte del trabajo podría mejorarse o hacerse más rápido?</h3>
+                            <p>La resolución de conflictos internos. Las diferencias personales no deberían afectar el
+                                flujo de trabajo. También la autonomía eléctrica, mencionando que si no hay luz,
+                                "mueren"</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Consideran que el sistema de trabajo que tienen ahora es eficiente?</h3>
+                            <p>Si, pero depende mucho del trabajo en equipo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GERENTE -->
+                <h3 style="margin:50px 0 20px; color:#d4af37;">Gerente</h3>
+
+                <div class="interview-container">
+
+                    <div class="interview-group">
+                        <div class="qa-box">
+                            <h3>¿Cuentan con un sistema para controlar el inventario de alimentos? </h3>
+                            <p>Si</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Se registran las ventas diarias de forma digital? </h3>
+                            <p>Si</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿El restaurante acepta reservas de mesas? </h3>
+                            <p>Si</p>
+                        </div>
+                    </div>
+
+                    <div class="interview-group">
+                        <div class="qa-box">
+                            <h3>¿Los empleados tienen turnos de trabajo definidos previamente? </h3>
+                            <p>Si</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Cómo se manejan las quejas o reclamos de los clientes?</h3>
+                            <p>No hay un sistema formal. En el restaurante, se resuelven rápidamente (5/15 minutos) a
+                                través del personal y encargados. En distribución, se canalizan a través del
+                                vendedor/comercial y luego a responsables del área</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Qué tipo de problemas suelen presentarse durante el servicio?</h3>
+                            <p>Demoras en la cocina o en la entrega, problemas de atención del personal, falta de stock
+                                o insatisfacción del cliente con la comida.</p>
+                        </div>
+                    </div>
+                    <div class="interview-group">
+                        <div class="qa-box">
+                            <h3>¿Cómo se realiza el control de stock de alimentos e insumos?</h3>
+                            <p>Se maneja mediante un sistema de inventario: Los productos ingresan a depósitos
+                                (stock).Luego se trasladan al punto de venta (inventario).A medida que se venden, el
+                                sistema descuenta automáticamente.Igualmente, en cocina es más complejo por el uso de
+                                materias primas, recetas y pérdidas (mermas).</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Cómo se gestionan las compras a proveedores?</h3>
+                            <p>Se reciben productos en depósitos desde proveedores. Luego se registran en el sistema y
+                                se distribuyen a los puntos de venta o al restaurante según necesidad. </p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Cómo se comunican los mozos con la cocina cuando hay nuevos pedidos?</h3>
+                            <p>La comunicación se realiza a través del sistema digital y también mediante interacción
+                                directa. Además, hay una estructura organizativa donde los pedidos y situaciones se
+                                elevan a jefes de sector.</p>
+                        </div>
+                    </div>
+                    <div class="interview-group">
+                        <div class="qa-box">
+                            <h3>¿Cómo es el proceso desde que un cliente realiza un pedido hasta que recibe su comida?
+                            </h3>
+                            <p>El cliente realiza el pedido a través del mozo, quien lo comunica al sistema. Luego la
+                                cocina prepara el pedido y el servicio lo entrega en la mesa. El proceso requiere
+                                rapidez, ya que los tiempos de respuesta son clave para la satisfacción del cliente.
+                            </p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Considera que el sistema actual de trabajo es eficiente?</h3>
+                            <p>Si</p>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Cree que la implementación de un nuevo sistema informático mejoraría la gestión?</h3>
+                            <p>Si</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div id="cuestionario" class="content-box">
+                <h2>Cuestionario</h2>
+
+                <div class="questionnaire-container">
+
+                    <!-- SECCIÓN 1 (2 bloques) -->
+                    <div class="question-group">
+                        <div class="qa-box">
+                            <h3>¿Qué tan claro es el proceso para registrar las ventas o pedidos de clientes?</h3>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Qué tan buena es la comunicación entre los empleados durante la jornada laboral?</h3>
+                            <div class="stars">★★★★☆</div>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN 2 (2 bloques) -->
+                    <div class="question-group">
+                        <div class="qa-box">
+                            <h3>¿Qué tan fácil es utilizar las herramientas o sistemas que usa el local?</h3>
+                            <div class="stars">★★★★☆</div>
+                        </div>
+                        <div class="qa-box">
+                            <h3>¿Qué tan organizadas son las tareas durante el horario laboral?</h3>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN 3 (1 bloque) -->
+                    <div class="question-group single">
+                        <div class="qa-box">
+                            <h3>¿Qué tan satisfecho está con la forma en la que se gestionan las ventas y la atención al
+                                cliente?</h3>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+
+    <script>
+        function showSection(id) {
+            const sections = document.querySelectorAll('.content-box');
+
+            sections.forEach(sec => sec.style.display = 'none');
+
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
+
+</body>
+
+</html>
