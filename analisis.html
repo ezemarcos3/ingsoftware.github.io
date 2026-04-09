@@ -87,9 +87,9 @@
         /* BOTONES */
         .analysis-menu {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 20px;
-            max-width: 1000px;
+            max-width: 2000px;
             margin: 0 auto 60px;
         }
 
@@ -132,6 +132,13 @@
             font-family: 'Playfair Display', serif;
             color: #d4af37;
             margin-bottom: 20px;
+        }
+
+        .content-box h3 {
+            font-family: 'Playfair Display', serif;
+            color: #ffffff;
+            margin-bottom: 20px;
+            margin-top: 20px;
         }
 
         /* ANIMACION */
@@ -267,9 +274,10 @@
         <!-- BOTONES -->
         <div class="analysis-menu">
             <div class="analysis-btn" onclick="showSection('proposito')">Declaración de Propósitos</div>
-            <div class="analysis-btn" onclick="showSection('acontecimientos')">Lista de Acontecimientos</div>
+            <div class="analysis-btn" onclick="showSection('acontecimientos')">Lista de Acontecimientos y DFD</div>
             <div class="analysis-btn" onclick="showSection('entrevista')">Entrevista</div>
             <div class="analysis-btn" onclick="showSection('cuestionario')">Cuestionario</div>
+            <div class="analysis-btn" onclick="showSection('diccionario')">Diccionario de Datos</div>
         </div>
 
         <!-- CONTENIDO -->
@@ -321,11 +329,29 @@
                     <li>Proveedor envía factura</li>
                 </ul>
 
-                <h3 style="margin-top:50px;">Diagrama de Flujo de Datos</h3>
+                <h3 style="margin-top:50px;">Diagrama de Flujo de Datos 0</h3>
 
                 <div style="margin-top:20px; max-width:800px; margin-left:auto; margin-right:auto;">
-                    <img src="image.png"
-                        alt="Diagrama de Flujo de Datos" style=" width:100%; border-radius:10px;border:1px solid rgba(255,255,255,0.1);box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+                    <img src="image.png" alt="Diagrama de Flujo de Datos"
+                        style=" width:100%; border-radius:10px;border:1px solid rgba(255,255,255,0.1);box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+                </div>
+
+                <h3 style="margin-top:50px;">Diagrama de Flujo de Datos 1</h3>
+
+                <div style="margin-top:20px; max-width:800px; margin-left:auto; margin-right:auto;">
+                    <img src="dfd1.png" alt="Diagrama de Flujo de Datos"
+                        style=" width:100%; border-radius:10px;border:1px solid rgba(255,255,255,0.1);box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+                </div>
+
+                <h3 style="margin-top:50px;">Diagrama de Flujo de Datos 2</h3>
+
+                <div style="margin-top:20px; max-width:800px; margin-left:auto; margin-right:auto;">
+                    <img src="dfd2 proceso 1.png" alt="Diagrama de Flujo de Datos"
+                        style=" width:100%; border-radius:10px;border:1px solid rgba(255,255,255,0.1);box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+                </div>
+                <div style="margin-top:20px; max-width:800px; margin-left:auto; margin-right:auto;">
+                    <img src="dfd2 proceso 2.png" alt="Diagrama de Flujo de Datos"
+                        style=" width:100%; border-radius:10px;border:1px solid rgba(255,255,255,0.1);box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
                 </div>
             </div>
             <div id="entrevista" class="content-box">
@@ -511,6 +537,79 @@
                     </div>
 
                 </div>
+            </div>
+
+            <div id="diccionario" class="content-box">
+                <h2>Diccionario de Datos</h2>
+                <h3>Entidad: Cliente</h3>
+                <li>id_cliente (Entero): Identificador único del cliente.
+                <li>nombre (Texto): Nombre del cliente.</li>
+                <li>telefono (Texto): Número de contacto.</li>
+                <li>email (Texto): Correo electrónico.</li>
+                <li>direccion (Texto): Dirección para envíos o contacto.</li>
+                <li>Proceso: Procesar ventas y reservas</li>
+                <ul>Entradas:</ul>
+                <li>Reclamo: Información sobre quejas o inconvenientes del cliente.</li>
+                <li> Reserva: Solicitud de reserva realizada por el cliente.</li>
+                <li>Pago: Datos correspondientes al pago del pedido o reserva.</li>
+                <li> Pedido: Información del pedido solicitado.</li>
+                <ul>Salidas:</ul>
+                <li>Comprobante: Confirmación del pago realizado. </li>
+                <li>Confirmación de reserva: Validación de la reserva. </li>
+                <li>Confirmación de pedido: Validación del pedido realizado. </li>
+
+                <h3>Entidad: Cocina</h3>
+                <li>id_pedido (Entero): Identificador del pedido. </li>
+                <li>estado_preparacion (Texto): Estado del pedido (pendiente, en preparación, listo). </li>
+
+                <h3>Entidad: Plataforma de Delivery</h3>
+                <li>id_pedido (Entero): Identificador del pedido.</li>
+                <li>estado_entrega (Texto): Estado del envío.</li>
+                <li>tiempo_estimado (Tiempo): Tiempo estimado de entrega.</li>
+
+                <h3>Almacén de datos: Almacén de pedidos</h3>
+                <li>id_pedido (Entero): Identificador del pedido.</li>
+                <li>fecha (Fecha): Fecha en que se realiza el pedido.</li>
+                <li>detalle (Texto): Descripción de los productos solicitados.</li>
+                <li>total (Decimal): Importe total del pedido.</li>
+                <li>estado (Texto): Estado actual del pedido.</li>
+
+                <h3>Almacén de datos: Almacén de reservas</h3>
+                <li>id_reserva (Entero): Identificador de la reserva.</li>
+                <li>fecha (Fecha): Fecha de la reserva.</li>
+                <li>hora (Hora): Hora de la reserva.</li>
+                <li>cantidad_personas (Entero): Número de personas.</li>
+
+                <h3>Almacén de datos: Almacén de inventario</h3>
+                <li>id_producto (Entero): Identificador del producto.</li>
+                <li>nombre_producto (Texto): Nombre del producto.</li>
+                <li>cantidad (Entero): Cantidad disponible en stock.</li>
+                <li>unidad (Texto): Unidad de medida del producto.</li>
+
+                <h3>Proceso: Gestionar inventario y pedidos</h3>
+                <ul>Entradas:</ul>
+                <li>Datos de stock: Información actual del inventario.</li>
+                <li>Datos del pedido: Información relacionada a los pedidos.</li>
+                <li>Datos de reserva: Información de reservas registradas.</li>
+                <li>Datos del cliente: Información del cliente.</li>
+                <li>Datos de mercadería: Información de insumos recibidos.</li>
+                <ul>Salidas:</ul>
+                <li>Información de stock: Estado actualizado del inventario.</li>
+                <li>Pedidos registrados: Registro de pedidos en el sistema.</li>
+                <li>Reportes: Información para control y gestión.</li>
+                <li>Orden de compra: Solicitud de productos a proveedores.</li>
+
+                <h3>Entidad: Proveedor</h3>
+                <li>id_proveedor (Entero): Identificador del proveedor.</li>
+                <li>nombre (Texto): Nombre del proveedor.</li>
+                <li>contacto (Texto): Información de contacto.</li>
+                <li>tipo_mercaderia (Texto): Tipo de productos que suministra.</li>
+
+                <h3>Entidad: Empleado</h3>
+                <li>id_empleado (Entero): Identificador del empleado.</li>
+                <li>nombre (Texto): Nombre del empleado.</li>
+                <li>rol (Texto): Función que cumple dentro del sistema.</li>
+
             </div>
     </section>
 
