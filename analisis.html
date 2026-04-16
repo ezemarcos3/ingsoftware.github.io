@@ -90,6 +90,8 @@
             grid-template-columns: repeat(5, 1fr);
             gap: 20px;
             max-width: 2000px;
+            display: flex;
+            justify-content: center;
             margin: 0 auto 60px;
         }
 
@@ -278,6 +280,7 @@
             <div class="analysis-btn" onclick="showSection('entrevista')">Entrevista</div>
             <div class="analysis-btn" onclick="showSection('cuestionario')">Cuestionario</div>
             <div class="analysis-btn" onclick="showSection('diccionario')">Diccionario de Datos</div>
+            <div class="analysis-btn" onclick="showSection('uml')">UML</div>
         </div>
 
         <!-- CONTENIDO -->
@@ -549,6 +552,30 @@
                 <div style="margin-top:20px; max-width:800px; margin-left:auto; margin-right:auto;">
                     <img src="diccionario 1 parte 2.jpeg" alt="Diagrama de Flujo de Datos"
                         style=" width:100%; border-radius:10px;border:1px solid rgba(255,255,255,0.1);box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+                </div>
+            </div>
+            <div id="uml" class="content-box">
+                <h2>UML</h2>
+                <p>El Lenguaje Unificado de Modelado, conocido internacionalmente como Unified Modeling Language o UML,
+                    es un estándar formal para visualizar, especificar, construir y documentar los sistemas de software
+                    y otros sistemas complejos.</p>
+                <p>Este lenguaje se compone de catorce diagramas oficiales que se dividen principalmente en dos grandes
+                    categorías: los diagramas de estructura, que muestran los componentes estáticos del sistema, y los
+                    diagramas de comportamiento, que ilustran su dinámica y funcionamiento. Entre los más utilizados
+                    destacan el diagrama de clases, que representa las clases, sus atributos, métodos y relaciones como
+                    herencia, asociación, agregación o composición; el diagrama de casos de uso, empleado frecuentemente
+                    en la fase de análisis de requisitos para identificar las funcionalidades que el sistema debe
+                    ofrecer a los usuarios; y el diagrama de secuencia, que describe la interacción entre objetos a lo
+                    largo del tiempo. Otros diagramas importantes incluyen los de actividad, de estados, de componentes,
+                    de despliegue y de paquetes, aunque en la práctica muchos proyectos solo emplean unos pocos según
+                    sus necesidades</p>
+
+                <h3 style="margin-top:50px;">Video</h3>
+                <div style="margin-top:20px; max-width:800px; margin-left:auto; margin-right:auto;">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/g-Ms-YPcQYw?si=zjiD-MSRrIr63Lc6"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
     </section>
